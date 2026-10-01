@@ -1,0 +1,447 @@
+MENTORMATCH AI — TEAM PROJECT INSTRUCTIONS
+
+Project: MentorMatch AI Purpose: AI-powered career mentorship platform
+connecting students with the right alumni and continuously guiding
+students toward their career goals.
+
+IMPORTANT
+
+This document is the single source of truth for the team’s development
+direction.
+
+Do not build random features independently. Do not replace working
+functionality without discussing it with the team. Do not commit
+secrets, API keys, passwords, virtual environments, node_modules, or
+unnecessary generated files. Keep the project runnable after every major
+change.
+
+1. PRODUCT VISION
+
+MentorMatch AI should become more than an alumni directory.
+
+Core journey: Student -> Profile -> AI Analysis -> Mentor Matching ->
+Mentorship Request -> Mentor Connection -> Sessions -> Career Roadmap ->
+Skill Gap Analysis -> Progress Tracking -> Career Outcomes
+
+Core positioning: “MentorMatch AI is an AI-powered career mentorship
+platform that understands where a student is, where they want to go,
+finds the right people to guide them, and continuously helps them get
+there.”
+
+2. CURRENT MVP
+
+The current MVP contains the foundation for: - Landing page - Student
+profile - Mentor profiles - Mentor matching - Compatibility score -
+Match explanations - Mentorship request - AI-style career roadmap -
+FastAPI backend - React/Vite frontend
+
+FIRST PRIORITY: Make the current MVP completely stable before adding
+advanced features.
+
+Required checks: - Backend starts successfully. - Frontend starts
+successfully. - Frontend communicates with backend. - Matching works. -
+Mentor request works. - Roadmap works. - UI is responsive. - No broken
+imports or syntax errors. - No unnecessary dependencies. - No secrets
+committed to GitHub.
+
+3. DEVELOPMENT ROADMAP
+
+PHASE 1 — STABILIZE MVP - Fix all frontend/backend errors. - Verify all
+existing workflows. - Improve error handling. - Add loading states. -
+Add empty states. - Make UI responsive. - Add proper README and setup
+instructions.
+
+PHASE 2 — DATABASE Move from in-memory data to PostgreSQL.
+
+Core entities: users, students, mentors, universities, skills,
+student_skills, mentor_skills, projects, mentorship_requests,
+mentorships, messages, sessions, roadmaps, goals, milestones, feedback,
+notifications.
+
+PHASE 3 — AUTHENTICATION Implement: - Student registration - Alumni
+registration - Login/logout - Password hashing - JWT authentication -
+Role-based access - Protected routes - Admin authentication -
+Forgot/reset password workflow
+
+Never store plain-text passwords.
+
+PHASE 4 — STUDENT ONBOARDING Collect education, skills, interests,
+projects, career goal, target industry, experience level, preferred
+mentorship type, and availability.
+
+Convert the information into a structured student profile for matching.
+
+PHASE 5 — ALUMNI ONBOARDING Collect name, profile photo, current role,
+company, experience, education, skills, industry, projects, mentorship
+areas, languages, availability, and professional links.
+
+Add verification status.
+
+PHASE 6 — AI MENTOR MATCHING This is the core product feature.
+
+Matching should consider: - Skills - Career goal - Industry -
+Interests - Projects - Experience - Mentor expertise - Availability -
+Mentorship type
+
+Target architecture: Student Profile -> Profile Representation /
+Embedding -> Mentor Representations -> Similarity Search -> Ranking
+Engine -> Top Matches
+
+Show both a compatibility score and understandable reasons.
+
+Example: 94% Compatibility Why this mentor? - Strong Python + ML
+overlap - Relevant industry experience - Experience with GenAI - Similar
+career path
+
+Do not show a score without explaining the match.
+
+PHASE 7 — MENTOR REQUESTS Workflow: Request Mentorship -> Select goal ->
+Select reason -> Write message -> Optional AI message improvement ->
+Send request -> Mentor accepts/declines
+
+Mentors should see student profile, career goal, compatibility, request
+message, and relevant skills.
+
+PHASE 8 — MENTOR DASHBOARD Include: - Overview - Requests - Students -
+Sessions - Messages - Availability - Feedback - Profile
+
+Useful metrics: - Students helped - Pending requests - Completed
+sessions - Average feedback
+
+PHASE 9 — MESSAGING After a request is accepted: Student <-> Mentor
+
+Support: - Text - Links - Resume/project sharing - Conversation
+history - AI suggestions where useful
+
+Later add real-time messaging.
+
+PHASE 10 — SCHEDULING Mentors define availability. Students can view
+available slots, select session duration, book, cancel/reschedule, and
+receive reminders.
+
+Later integrate calendar services.
+
+PHASE 11 — AI CAREER ROADMAP Generate a personalized roadmap based on
+current skills, target role, skill gaps, projects, mentor feedback, and
+career objectives.
+
+Example progression: Foundation -> Build -> Prove -> Launch
+
+The roadmap should contain skills, learning tasks, projects, milestones,
+target dates, and progress.
+
+PHASE 12 — SKILL GAP ANALYZER Compare current skills against target
+career requirements.
+
+Output: - Strong skills - Partial skills - Missing skills - Recommended
+learning - Recommended projects - Recommended mentor expertise
+
+PHASE 13 — RESUME ANALYZER Allow PDF resume upload.
+
+Analyze skills, projects, structure, relevant keywords, missing areas,
+career alignment, and improvement suggestions.
+
+Do not claim guaranteed ATS results.
+
+PHASE 14 — GITHUB ANALYZER Allow a student to provide a GitHub username.
+
+Analyze available public information such as repositories, languages,
+activity, project diversity, README quality, and contributions.
+
+Use this to suggest portfolio improvements.
+
+PHASE 15 — PROGRESS TRACKING Track goals, milestones, skills, projects,
+mentorship sessions, feedback, and roadmap completion.
+
+Show clear progress visualization.
+
+PHASE 16 — AI SESSION SUMMARY After a mentorship session, generate
+discussion summary, key advice, resources, action items, and next steps.
+
+Action items should be connected to the student’s progress when
+possible.
+
+PHASE 17 — MENTOR FEEDBACK After sessions, allow mentors to provide
+strengths, areas to improve, recommendations, and next steps.
+
+Convert useful feedback into trackable action items.
+
+PHASE 18 — VERIFICATION Add mentor verification.
+
+Possible methods: - College email - Company email - Professional
+profile - Manual admin verification
+
+Only display a verified badge after actual verification.
+
+PHASE 19 — REPUTATION Add mentorship feedback covering communication,
+career knowledge, helpfulness, responsiveness, and overall experience.
+
+Do not make ratings the only matching factor.
+
+PHASE 20 — UNIVERSITY DASHBOARD For participating institutions, show
+students, alumni, active mentors, sessions, career goals, popular
+skills, and mentorship activity.
+
+Use real data in production. Clearly label demo data during development.
+
+PHASE 21 — ADMIN PANEL Admin functions: - Student management - Alumni
+management - Mentor verification - Reports - Mentorship management -
+University management - Analytics - Moderation - Platform settings
+
+PHASE 22 — NOTIFICATIONS Support in-app notifications for mentorship
+requests, acceptance, messages, session reminders, roadmap milestones,
+mentor availability, and feedback.
+
+Email/push notifications can be added later.
+
+PHASE 23 — SEARCH AND DISCOVERY Global mentor search with filters for
+role, industry, skills, company, experience, university, availability,
+and mentorship type.
+
+PHASE 24 — MULTI-MENTOR SYSTEM Eventually allow students to have
+multiple mentors, such as a technical mentor, career mentor, and
+resume/interview mentor.
+
+PHASE 25 — COMMUNITIES AND GROUP MENTORSHIP Add career communities such
+as AI/ML, Software Engineering, Data Science, Cybersecurity, Cloud,
+Product, and Entrepreneurship.
+
+Later support workshops and group mentoring.
+
+PHASE 26 — JOB AND INTERNSHIP MATCHING Future workflow: Student Profile
+-> Skills -> Career Goal -> Job/Internship Requirements -> Skill Gap ->
+Preparation Plan
+
+Only use legitimate and authorized job data sources.
+
+4. UI / UX DIRECTION
+
+The product should feel like a modern AI SaaS platform, not a basic
+college project.
+
+Design principles: - Clean typography - Spacious layouts - Strong visual
+hierarchy - Consistent cards - Subtle animations - Modern dashboards -
+Responsive design - Mobile-first thinking - Light and dark mode -
+Accessible contrast - Consistent iconography
+
+Suggested navigation: Home | Discover Mentors | My Mentorship | Roadmap
+| Progress | Messages | Profile
+
+Avoid unnecessary visual clutter.
+
+5. TECHNICAL ARCHITECTURE
+
+Recommended stack:
+
+Frontend: - React - Vite - Tailwind CSS or existing design system -
+Lucide icons
+
+Backend: - FastAPI - Python
+
+Database: - PostgreSQL
+
+Authentication: - JWT - Secure password hashing
+
+AI: - Embeddings - LLM - Explainable ranking
+
+Vector search: - pgvector initially
+
+Deployment: - Docker - Docker Compose
+
+Target architecture:
+
+Frontend | | REST/API v FastAPI Backend | +—- PostgreSQL | +—- AI Layer
+| +—- Vector Search
+
+6. API ORGANIZATION
+
+Suggested API groups: /api/auth /api/students /api/mentors /api/matching
+/api/mentorship /api/messages /api/sessions /api/roadmaps /api/skills
+/api/resume /api/github /api/notifications /api/admin
+
+Do not turn the entire production backend into one huge Python file.
+
+7. SECURITY RULES
+
+Never commit: - API keys - Passwords - Tokens - Database credentials -
+.env files - Private certificates - Personal confidential data
+
+Use environment variables.
+
+.env must not be uploaded to GitHub.
+
+Implement: - Password hashing - JWT validation - Input validation -
+Authorization - CORS configuration - Rate limiting where needed - File
+upload validation - Secure error handling - Logging - Database
+permissions
+
+8. GIT / GITHUB RULES
+
+Commit small, meaningful changes.
+
+Examples: “Fix mentor matching API” “Add student onboarding” “Add mentor
+dashboard” “Add PostgreSQL models” “Improve responsive dashboard”
+
+Do not commit: backend/venv/ frontend/node_modules/ pycache/ *.pyc .env
+local build/cache files
+
+Recommended .gitignore: backend/venv/ frontend/node_modules/ pycache/
+.pyc .env .env. !.env.example dist/ .vite/
+
+Before pushing: 1. Test the project. 2. Check git status. 3. Confirm no
+secrets. 4. Commit. 5. Push.
+
+9. BRANCHING
+
+For team development:
+
+main = stable version
+
+Feature branches: feature/auth feature/matching feature/dashboard
+feature/messaging feature/roadmap
+
+Do not directly make large experimental changes on main.
+
+Use pull requests when practical.
+
+10. TEAM WORKFLOW
+
+Before starting a feature: 1. Check the current GitHub code. 2. Check
+whether another teammate is already modifying the same area. 3. Create a
+feature branch. 4. Implement the feature. 5. Test locally. 6. Commit
+with a clear message. 7. Push the branch. 8. Tell the team what changed.
+9. Merge after review.
+
+Every developer should document: - What was changed - Files changed -
+How to run it - Any dependencies added - Any known limitations
+
+11. FEATURE PRIORITY
+
+Priority 1 — Must work: - MVP stability - Authentication - PostgreSQL -
+Student onboarding - Alumni onboarding - AI mentor matching - Mentorship
+requests - Mentor dashboard - Student dashboard
+
+Priority 2 — Strong product: - Messaging - Scheduling - Career roadmap -
+Skill gap analyzer - Progress tracking - Notifications - Mentor
+verification
+
+Priority 3 — Startup expansion: - Resume analyzer - GitHub analyzer - AI
+session summaries - University dashboard - Admin analytics -
+Multi-mentor - Communities - Group mentorship - Job/internship matching
+
+12. TEAM ROLE SUGGESTION
+
+If the team has multiple members, divide work by modules.
+
+Member 1 — Frontend - UI - Student dashboard - Mentor dashboard -
+Responsive design - Navigation
+
+Member 2 — Backend - FastAPI - APIs - Authentication - Business logic
+
+Member 3 — Database - PostgreSQL - Models - Migrations - Data
+relationships
+
+Member 4 — AI - Matching - Embeddings - Skill gap - Roadmap - AI prompts
+
+Member 5 — Integration / QA - Frontend/backend integration - Testing -
+Deployment - Documentation - Demo preparation
+
+If there are fewer members, combine roles.
+
+13. TESTING REQUIREMENTS
+
+Before every major demo, test: - Registration - Login - Profile
+creation - Mentor discovery - Matching - Request - Acceptance -
+Messaging - Scheduling - Roadmap - Progress - Logout
+
+Also test: - Empty data - Invalid input - Network failure - Unauthorized
+access - Mobile layout
+
+14. DEMO FLOW
+
+The hackathon demo should follow one clear story:
+
+1.  Student creates profile.
+2.  Student enters career goal.
+3.  AI analyzes the profile.
+4.  AI recommends mentors.
+5.  Student sees compatibility explanations.
+6.  Student opens a mentor profile.
+7.  Student sends a mentorship request.
+8.  Mentor accepts.
+9.  Student receives a personalized roadmap.
+10. Student views skill gaps.
+11. Student books a session.
+12. Mentor provides feedback.
+13. Student progress updates.
+
+The demo should show the complete journey rather than isolated screens.
+
+15. STARTUP DIRECTION
+
+Long-term product positioning:
+
+MentorMatch AI should become a career mentorship infrastructure
+connecting: Students + Alumni + Universities + Professionals + Employers
+
+Potential future capabilities: - Multi-college network - Professional
+mentors - AI career intelligence - Internship matching - Interview
+preparation - Portfolio building - Career communities - Group
+mentorship - University analytics
+
+16. IMPORTANT DEVELOPMENT PRINCIPLE
+
+Build vertically.
+
+Do not create 20 unfinished screens.
+
+Instead complete one workflow end-to-end:
+
+Student signup -> Profile -> Match -> Mentor profile -> Request ->
+Accept -> Session -> Feedback -> Progress
+
+Once one workflow is reliable, expand it.
+
+17. DEFINITION OF DONE
+
+A feature is NOT complete merely because the UI exists.
+
+A feature is complete when: - UI works - API works - Database works
+where required - Validation exists - Error handling exists - Loading
+state exists - Empty state exists - Responsive design works - It has
+been tested - It does not break existing workflows - Documentation is
+updated
+
+18. CURRENT IMMEDIATE TASK
+
+Before adding advanced functionality:
+
+TASK 1: Make the current MentorMatch AI MVP completely stable.
+
+TASK 2: Verify frontend and backend communication.
+
+TASK 3: Create the GitHub-ready structure.
+
+TASK 4: Add PostgreSQL.
+
+TASK 5: Add authentication.
+
+TASK 6: Build student and alumni onboarding.
+
+TASK 7: Upgrade the matching engine.
+
+Then continue through the roadmap.
+
+19. FINAL GOAL
+
+The final product should feel like:
+
+“An AI career mentor network where every student can discover the right
+human mentors, receive personalized career guidance, track their growth,
+and continuously improve.”
+
+Build for: - Hackathon demo quality - Real user experience - Startup
+scalability - Maintainable code - Secure deployment - Future university
+adoption
+
+END OF TEAM INSTRUCTIONS
